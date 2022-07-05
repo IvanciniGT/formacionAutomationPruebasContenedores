@@ -1,0 +1,66 @@
+# En yaml puedo poner comentarios, cosa que por ejemplo no puedo hacer en JSON
+# 
+# Mapa: Conjunto de claves valor:
+clave: valor
+vlave2:                         valor2
+
+# Qué pueden ser los valores:
+# Números:
+3
+6
+-9
+-12.98
+# Valores lógicos:
+True   true TRUE
+False  false FALSE
+# Textos:
+hola
+"hola"
+'hola'
+# Sintaxis de textos literal: En este caso se respetan los saltos de linea
+| 
+    Escribo un texto
+    que sigue aqui
+
+# Sintaxis de textos folded: Aqui no se respetan los saltos de linea. 
+# YAML junta todas las lineas en una sola, reemplazando los saltos de linea por espacios en blanco
+> 
+    Escribo un texto
+    que sigue aqui
+# Lista de valores
+- texto1
+- texto2
+- texto3
+- 4
+- false
+# Un valor puede ser un nuevo mapa
+
+services:
+    mariadb:
+        container_name: "mimariadb"
+        image:          mariadb:latest
+        ports:      
+            - 3306:3306
+            - 3307:3307
+        volumes:
+            - RUTA1:RUTA2
+            - RUTAA:RUTAB
+
+# Los programas que usan YAML definen un esquema:
+# La estructura de etiquetas qe tengo que poner en el fichero, y que tipos de datos tiene cada etiqueta
+# Docker-compose tiene su propio esquema
+
+
+  
+So'y "un #texto
+
+
+"So'y \"un \n#texto" #Las contrabarras solo escapan dentro de comillas doble
+
+
+
+'So''y "un \n#texto'
+
+
+
+

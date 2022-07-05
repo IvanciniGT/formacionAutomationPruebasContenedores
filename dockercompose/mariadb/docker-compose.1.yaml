@@ -1,0 +1,29 @@
+version: "3"     # Versión del esquema YAML de docker-compose
+                 # https://docs.docker.com/compose/compose-file/
+
+services:
+    # Nuestros contenedores
+    mariadb: # Este no es el nombre del contenedor. 
+             # Es un nombre fqdn que apunta al contenedor en la red de docker
+             # NO NOS LIAMOS: IGUAL AL NOMBRE DEL CONTENEDOR
+        container_name:     mariadb
+        image:              mariadb:10.7.4
+        environment:
+            MARIADB_ROOT_PASSWORD:  password
+            MARIADB_DATABASE:       curso
+            MARIADB_USER:           usuario
+            MARIADB_PASSWORD:       password
+            #cache:                  "true"
+            #- MARIADB_ROOT_PASSWORD=password
+            #- MARIADB_DATABASE=curso
+            #- MARIADB_USER=usuario
+            #- MARIADB_PASSWORD=password
+            #- cache=true
+        ports:
+            - 172.17.0.1:3306:3306
+              # IP DEL HOST SOBRE LA QUE ABRO UN PUERTO DE REDIRECCION
+                         # PUERTO DEL HOST 
+                              # PUERTO DEL CONTENEDOR
+        volumes:
+            #- RUTA_HOST:RUTA_CONTENEDOR
+            - /home/ubuntu/environment/datos/mariadb:/var/lib/mysql

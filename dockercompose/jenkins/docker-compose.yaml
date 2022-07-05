@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+    jenkins:
+        image: jenkins/jenkins:lts-jdk11
+        container_name: mijenkins
+        ports:
+            - 8080:8080 
+            - 50000:50000
+        restart: on-failure  # always
+        user: root           # Ejecuta los procesos dentro del conteendor con usuario ROOT
+        volumes:
+            - jenkins:/var/jenkins_home 
+            # ??? ESTO ES RARO???
+            # Esto es algo muy especial que se llama: DiD: Docker In Docker 
+            # Esto permite a un contenedor crear más contenedores dentro del mismo host
+            - /var/run/docker.sock:/var/run/docker.sock 
+            - /usr/bin/docker:/usr/bin/docker
+            
+volumes: 
+    jenkins: # Docker, crea tu una carpeta en el host donde ten venga en gana... 
+             # Y guarda alli los datos... 
+             # paso de darte yo una ruta
+             # Esto esta guay apra pasar este fichero a otras persoans... no necesitan cambiar la ruta
+             # $ docker volume inspect jenkins > JSON que entre otras cosas, 
+             #                                   contendrá la ruta de la carpeta donde se guardan los datos del host
