@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+    compilador:
+        image: python:3.9
+        container_name: testeador
+        volumes:
+            - /home/ubuntu/environment/curso/dockercompose/selenium-test:/proyecto
+            
+        working_dir: /proyecto
+        command: /proyecto/arranque.sh
