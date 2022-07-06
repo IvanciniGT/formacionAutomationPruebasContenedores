@@ -28,7 +28,7 @@ pipeline {
             post{
                 always {
                     echo 'Guardo el informe de pruebas unitarias'
-                    junit 'target/surefire-reports/*.xml'
+                    junit 'proyecto/target/surefire-reports/*.xml'
                 }
             }
             agent {
@@ -65,7 +65,7 @@ pipeline {
             post{
                 success {
                     echo 'Guardo el empaquetado: war'
-                    archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
+                    archiveArtifacts artifacts: 'proyecto/target/*.war', followSymlinks: false
                 }
             }
         }
@@ -73,7 +73,7 @@ pipeline {
     }
     post{
         always {
-                sh 'mvn clean' 
+                sh 'mvn -f proyecto/pom.xml  clean' 
         }
     }
 }
