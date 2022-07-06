@@ -4,7 +4,6 @@ services:
 
     miwebapp:
         container_name: miwebapp
-        image: miwebapp:desarrollo
         build: 
             context: .
         ports:
