@@ -2,7 +2,7 @@ pipeline {
     
     agent {
         docker {
-            image "ubuntu"
+            image "maven:3.6-jdk-8"
         }
     } 
     
@@ -11,7 +11,7 @@ pipeline {
         stage('1-Compilacíon/empaquetado básico'){
             steps {
                 echo 'Lo que necesite hacer para compilar mi código'
-                sh 'mvn compile'
+                sh 'mvn -f proyecto/pom.xml compile'
             }
             agent {
                 docker {
@@ -23,7 +23,7 @@ pipeline {
         stage('2-Pruebas unitarias'){
             steps {
                 echo 'Realizar pruebas unitarias'
-                sh 'mvn test'
+                sh 'mvn  -f proyecto/pom.xml test'
             }
             post{
                 always {
@@ -42,7 +42,7 @@ pipeline {
                 echo 'Llamar a SonarQube'
                 withSonarQubeEnv('sonarqube'){
                     sh '''
-                    mvn sonar:sonar \
+                    mvn  -f proyecto/pom.xml sonar:sonar \
                         -Dsonar.projectKey=proyectoMaven
                     '''
                 }
@@ -60,7 +60,7 @@ pipeline {
         stage('4-Empaquetar la app para su posible ejecución'){
             steps {
                 echo 'Empaqueto'
-                sh 'mvn package'
+                sh 'mvn  -f proyecto/pom.xml  package'
             }
             post{
                 success {
