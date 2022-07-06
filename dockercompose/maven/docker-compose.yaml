@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+    compilador:
+        image: maven:3.8.6-openjdk-11
+        container_name: compilador
+        volumes:
+            - /home/ubuntu/environment/curso/proyecto:/proyecto
+            
+        working_dir: /proyecto
+        command: mvn package # Lo cual, dicho sea de paso, sería una cagada divertida!!!
+            # Compilacion
+            # Compilacion de los test
+            # Test?
+            # Empaquetado?
+# Para que vale una prueba:
+# Para validar algo
+# Si no funciona, IDENTIFICAR el PROBLEMA;
+# Unitarias
+# Integracion
+# Sistema
+# BBDD
+# Rendimiento
+# Servicio WEB
+# Interfaz web

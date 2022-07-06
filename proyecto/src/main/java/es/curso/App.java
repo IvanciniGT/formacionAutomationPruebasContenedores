@@ -33,3 +33,4 @@ public class App
         return numero1 < numero2 ? numero1 : numero2 ;
     }
 }
+// byte-code

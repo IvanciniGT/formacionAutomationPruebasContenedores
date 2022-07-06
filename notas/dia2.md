@@ -49,3 +49,15 @@ YAML - YAML ain't markup language. Inspirado en python. Pensado para seres human
 HTML  >  etiquetas TAGs         <p>Parrafo <b>negrita></b> </p>
 SGML /
   ML: Markup language
+  
+  
+ 
+ Necesitamos la maquina virtual de java y el compilador de javac :> JDK Versiones concretas
+ Maven                                                                  Versiones concretas
+ 
+ 
+ Quien va a ejecutar esto por mi: JENKINS
+ Lo ejecuta en su entorno
+ 
+ 
+ 3.8.6-openjdk-8
